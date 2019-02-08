@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'knox',
     'mercado_app',
+    'frontend',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
