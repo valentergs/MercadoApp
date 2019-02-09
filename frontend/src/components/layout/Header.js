@@ -5,7 +5,7 @@ export class Header extends Component {
     return (
       <nav className="navbar navbar-expand-sm navbar-light bg-light">
         <a className="navbar-brand" href="#">
-          Navbar
+          Mercado App
         </a>
         <button
           className="navbar-toggler"
