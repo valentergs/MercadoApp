@@ -5,7 +5,9 @@ import { getProds, deleteProd } from "../../actions/produtos";
 
 export class Produtos extends Component {
   static propTypes = {
-    produtos: PropTypes.array.isRequired
+    produtos: PropTypes.array.isRequired,
+    getProds: PropTypes.func.isRequired,
+    deleteProd: PropTypes.func.isRequired
   };
 
   componentDidMount() {
