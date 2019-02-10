@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getProds } from "../../actions/produtos";
+import { getProds, deleteProd } from "../../actions/produtos";
 
 export class Produtos extends Component {
   static propTypes = {
@@ -32,7 +32,12 @@ export class Produtos extends Component {
                 <td>{x.descrição}</td>
                 <td>{x.seção}</td>
                 <td>
-                  <button className="btn btn-danger btn-sm">Apagar</button>
+                  <button
+                    onClick={this.props.deleteProd.bind(this, x.id)}
+                    className="btn btn-danger btn-sm"
+                  >
+                    Apagar
+                  </button>
                 </td>
               </tr>
             ))}
@@ -49,5 +54,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProds }
+  { getProds, deleteProd }
 )(Produtos);
