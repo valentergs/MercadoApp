@@ -303,9 +303,5 @@ pip-selfcheck.json
 # Virtualenv
 # http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
 
-<<<<<<< HEAD
 # End of https://www.gitignore.io/api/osx,venv,python,django,virtualenv
 node_modules
-=======
-# End of https://www.gitignore.io/api/osx,node,venv,django,python,virtualenv
->>>>>>> dev
