@@ -1,11 +1,12 @@
 import axios from "axios";
 
 import { GET_PRODS, DELETE_PROD, ADD_PROD } from "./types";
+import { tokenConfig } from "./auth";
 
 // GET Produtos
-export const getProds = () => dispatch => {
+export const getProds = () => (dispatch, getState) => {
   axios
-    .get("api/mercado_app/produto/")
+    .get("api/mercado_app/produto/", tokenConfig(getState))
     .then(res => {
       dispatch({
         type: GET_PRODS,
@@ -16,9 +17,9 @@ export const getProds = () => dispatch => {
 };
 
 //DELETE Produto
-export const deleteProd = id => dispatch => {
+export const deleteProd = id => (dispatch, getState) => {
   axios
-    .delete(`api/mercado_app/produto/${id}/`)
+    .delete(`api/mercado_app/produto/${id}/`, tokenConfig(getState))
     .then(res => {
       dispatch({
         type: DELETE_PROD,
@@ -29,9 +30,9 @@ export const deleteProd = id => dispatch => {
 };
 
 // ADD Produto
-export const addProd = produto => dispatch => {
+export const addProd = produto => (dispatch, getState) => {
   axios
-    .post("api/mercado_app/produto/", produto)
+    .post("api/mercado_app/produto/", produto, tokenConfig(getState))
     .then(res => {
       dispatch({
         type: ADD_PROD,

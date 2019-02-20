@@ -1,4 +1,9 @@
-import { GET_PRODS, DELETE_PROD, ADD_PROD } from "../actions/types.js";
+import {
+  GET_PRODS,
+  DELETE_PROD,
+  ADD_PROD,
+  CLEAR_PROD
+} from "../actions/types.js";
 
 const initialState = {
   produtos: []
@@ -22,6 +27,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         produtos: [...state.produtos, action.payload]
+      };
+    case CLEAR_PROD:
+      return {
+        ...state,
+        produtos: []
       };
     default:
       return state;
