@@ -1,8 +1,22 @@
-from mercado_app.models import Produto, Loja, Lista
+from mercado_app.models import Produto, Mercado, Lista, Items
 from rest_framework import viewsets, permissions
-from .serializers import (MercadoAppListaSerializer,
-                          MercadoAppLojaSerializer,
-                          MercadoAppProdSerializer,)
+from .serializers import ProdutoSerializer, MercadoSerializer, ListaSerializer, ItemsSerializer
+
+
+class ProdutoViewSet(viewsets.ModelViewSet):
+    queryset = Produto.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = ProdutoSerializer
+
+
+class MercadoViewSet(viewsets.ModelViewSet):
+    queryset = Mercado.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = MercadoSerializer
 
 
 class ListaViewSet(viewsets.ModelViewSet):
@@ -10,27 +24,12 @@ class ListaViewSet(viewsets.ModelViewSet):
     permission_classes = [
         permissions.AllowAny
     ]
-    serializer_class = MercadoAppListaSerializer
+    serializer_class = ListaSerializer
 
 
-class ProdutoViewSet(viewsets.ModelViewSet):
-    permission_classes = [
-        permissions.IsAuthenticated
-    ]
-
-    serializer_class = MercadoAppProdSerializer
-
-    def get_queryset(self):
-        return self.request.user.produtos.all()
-
-    # Para poder ligar o OWNER ao objeto criado:
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
-
-
-class LojaViewSet(viewsets.ModelViewSet):
-    queryset = Loja.objects.all()
+class ItemsViewSet(viewsets.ModelViewSet):
+    queryset = Items.objects.all()
     permission_classes = [
         permissions.AllowAny
     ]
-    serializer_class = MercadoAppLojaSerializer
+    serializer_class = ItemsSerializer

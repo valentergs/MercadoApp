@@ -1,20 +1,28 @@
 from rest_framework import serializers
-from mercado_app.models import Produto, Loja, Lista
+from mercado_app.models import Produto, Mercado, Lista, Items
 
 
-class MercadoAppProdSerializer(serializers.ModelSerializer):
+class ProdutoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Produto
-        fields = '__all__'
+        fields = ('nome', 'marca', 'embalagem')
 
 
-class MercadoAppLojaSerializer(serializers.ModelSerializer):
+class MercadoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Loja
+        model = Mercado
         fields = '__all__'
 
 
-class MercadoAppListaSerializer(serializers.ModelSerializer):
+class ListaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lista
         fields = '__all__'
+        depth = 1
+
+
+class ItemsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Items
+        fields = '__all__'
+        depth = 1
