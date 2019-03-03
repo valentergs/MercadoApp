@@ -306,3 +306,4 @@ pip-selfcheck.json
 # End of https://www.gitignore.io/api/osx,node,venv,django,python,virtualenv
 
 node_modules
+.vscode
